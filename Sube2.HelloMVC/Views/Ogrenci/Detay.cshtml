@@ -1,20 +1,11 @@
 ﻿@model DetayViewModel
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>OgrenciDetay</title>
-</head>
-<body>
-    <h3>Öğrenci Detayları</h3>
-    <p>ViewData ile gelen öğrenci:@(((Ogrenci)ViewData["Ogrenci"]).Ad)</p>
-    <p>ViewBag ile Gelen Öğrenci: @ViewBag.Student.Ad </p>
-    <p>Model ile gelen öğrenci: @Model.Ogrenci.Ad</p>
-    <p>Model ile gelen Öğretmen bilgisi:@Model.Ogretmen.Ad</p>
-</body>
-</html>
+
+<h3>Öğrenci Detayları</h3>
+<p>ViewData ile gelen öğrenci:@(((Ogrenci)ViewData["Ogrenci"]).Ad)</p>
+<p>ViewBag ile Gelen Öğrenci: @ViewBag.Student.Ad </p>
+<p>Model ile gelen öğrenci: @Model.Ogrenci.Ad</p>
+<p>Model ile gelen Öğretmen bilgisi:@Model.Ogretmen.Ad</p>
+<div>@Model.Ogretmen.Ad</div>
+
