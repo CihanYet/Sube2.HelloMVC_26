@@ -7,7 +7,7 @@ namespace Sube2.HelloMVC.Controllers
     public class OgrenciController : Controller
     {
         public IActionResult Index()
-        {
+        {    
             return View();
         }
 
