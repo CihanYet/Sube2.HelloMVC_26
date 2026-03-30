@@ -7,8 +7,14 @@ namespace Sube2.HelloMVC.Controllers
     public class OgrenciController : Controller
     {
         public IActionResult Index()
-        {    
-            return View();
+        {           
+            var lst = new List<Ogrenci> 
+            {
+                new Ogrenci() { Ad = "Ali", Soyad = "Veli" },
+                new Ogrenci() { Ad = "Ahmet", Soyad = "Mehmet" },
+                new Ogrenci() { Ad = "Osman", Soyad = "Yılmaz" }
+            };
+            return View(lst);
         }
 
         public ViewResult OgrenciDetay()
