@@ -11,32 +11,38 @@ namespace Sube2.CollectionsApp
 
             int sayi1 = 10, sayi2 = 30;
 
-            var sayilar = new int[2];//Type Safe
-            sayilar[0] = sayi1;
-            sayilar[1] = sayi2;
+            //var sayilar = new int[2];//Type Safe
+            //sayilar[0] = sayi1;
+            //sayilar[1] = sayi2;
 
-            ArrayList list = new ArrayList();
-            list.Add("Gazi");
-            list.Add(sayi1);//Boxing
-            list.Add(sayi2);
-            list.Add(10);
-            list.Add(20);
-            list.Add(10);
-            list.Add(20);
-            list.Add(10);
-            list.Add(20);
-            list.Capacity = list.Count;
-            Console.WriteLine(list.Capacity);
+            //ArrayList list = new ArrayList();
+            //list.Add("Gazi");
+            //list.Add(sayi1);//Boxing
+            //list.Add(sayi2);
+            //list.Add(10);
+            //list.Add(20);
+            //list.Add(10);
+            //list.Add(20);
+            //list.Add(10);
+            //list.Add(20);
+            //list.Capacity = list.Count;
+            //Console.WriteLine(list.Capacity);
 
-            Console.WriteLine((int)list[1] + (int)list[2]);//Unboxing
-            Console.WriteLine(sayilar[0] + sayilar[1]);
+            //Console.WriteLine((int)list[1] + (int)list[2]);//Unboxing
+            //Console.WriteLine(sayilar[0] + sayilar[1]);
 
             //Generic Collections: Type Safe Collections
             var list2 = new List<int>();
             list2.Add(sayi1);
             list2.Add(sayi2);
 
+
             Console.WriteLine(list2[0] + list2[1]);
+
+            foreach (var item in list2)
+            {
+                Console.WriteLine(item);
+            }
 
             var t = new Test<int>();
             t.value1 = sayi1;
@@ -51,7 +57,7 @@ namespace Sube2.CollectionsApp
             t2.value2 = "Üniversitesi";
 
             ITest d = new Deneme();
-           // d.Denemesayi = sayi1;
+            // d.Denemesayi = sayi1;
             d.Yazdir("Gazi");
 
             d = new Deneme2();
@@ -90,22 +96,45 @@ namespace Sube2.CollectionsApp
         public T value2;
     }
 
-    class KayitIslemleri<T>
+    class BaseEntity
     {
-        public void Kaydet(T value)
+        public DateTime CreatedDate { get; set; }
+    }
+
+    class Ogrenci : BaseEntity
+    {
+        public string Ad { get; set; }
+    }
+
+
+    class KayitIslemleri<T> where T : BaseEntity// Generic Constraints
+    {
+        public bool Kaydet(T value)
         {
             //DB İşlemleri
+            return true;
         }
 
-        //public void Kaydet(Ogretmen value)
-        //{
-        //    //DB İşlemleri
-        //}
+        public bool Guncelle(T entity)
+        {
+            return true;
+        }
 
-        //public void Kaydet(Ders value)
-        //{
-        //    //DB İşlemleri
-        //}
+        public bool Sil(int id)
+        {
+            return true;
+        }
+
+        public T GetEntity(int id)
+        {
+            return null;
+        }
+
+        public List<T> GetEntities()
+        {
+            return new List<T>();
+        }
+
 
         //Bu şekilde her enttity için kaydet metodu yazmak yerine, Generic yapı kullanmak, kod tekrarının ve class'a sonradan yapılan müdahalelerin önüne geçer.
     }
