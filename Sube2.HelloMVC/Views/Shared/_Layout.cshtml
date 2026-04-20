@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Sube2.HelloMVC</title>
+    <meta name="description" content="@ViewData["Desc"]" />
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -30,7 +31,7 @@
                             <a class="nav-link text-dark" href="/Ogrenci/Index">Öğrenci Listesi</a>
                         </li>
                         <li>
-                            @Html.ActionLink("Öğrenci Listesi","Index","Ogrenci",null,new{@class="nav-link text-dark"})
+                            @Html.ActionLink("Öğrenci Listesi", "Index", "Ogrenci", null, new { @class = "nav-link text-dark" })
                         </li>
                         <li>
                             <a asp-action="Index" asp-controller="Ogrenci" class="nav-link text-dark">Öğrenci Listesi</a>

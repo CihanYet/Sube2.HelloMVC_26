@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "OgrenciEkle";
+    ViewData["Desc"] = "Öğrenci ekleme sayfası";
+}
+
+<h1>Ögrenci Ekle</h1>
+
+<form action="/Ogrenci/OgrenciEkle" method="post">
+    <label>Ad</label>
+    <input type="text" name="txtAd" />
+    <label>Soyad</label>
+    <input type="text" name="txtSoyad" />
+    <label>Numara</label>
+    <input type="number" name="txtNumara" />
+
+    <input type="submit" name="btnKaydet" value="Kaydet" />
+</form>

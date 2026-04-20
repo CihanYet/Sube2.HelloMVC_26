@@ -7,8 +7,8 @@ namespace Sube2.HelloMVC.Controllers
     public class OgrenciController : Controller
     {
         public IActionResult Index()
-        {           
-            var lst = new List<Ogrenci> 
+        {
+            var lst = new List<Ogrenci>
             {
                 new Ogrenci() { Ad = "Ali", Soyad = "Veli" },
                 new Ogrenci() { Ad = "Ahmet", Soyad = "Mehmet" },
@@ -35,6 +35,27 @@ namespace Sube2.HelloMVC.Controllers
             vm.Ogrenci = ogr;
 
             return View("Detay", vm);
+        }
+
+        [HttpPost]
+        public ViewResult OgrenciEkle(IFormCollection fc)
+        {
+            var ogr = new Ogrenci();
+            ogr.Ad = fc["txtAd"].ToString();
+            ogr.Soyad = fc["txtSoyad"].ToString();
+            ogr.Numara = int.Parse(fc["txtNumara"].ToString());
+            using (var ctx=new OkulDbContext())
+            {
+                ctx.Ogrenciler.Add(ogr);
+                ctx.SaveChanges();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult OgrenciEkle()
+        {
+            return View();
         }
     }
 }
