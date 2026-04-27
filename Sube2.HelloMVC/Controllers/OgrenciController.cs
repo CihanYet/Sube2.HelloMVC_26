@@ -37,14 +37,26 @@ namespace Sube2.HelloMVC.Controllers
             return View("Detay", vm);
         }
 
+        //[HttpPost]
+        //public ViewResult OgrenciEkle(IFormCollection fc)
+        //{
+        //    var ogr = new Ogrenci();
+        //    ogr.Ad = fc["txtAd"].ToString();
+        //    ogr.Soyad = fc["txtSoyad"].ToString();
+        //    ogr.Numara = int.Parse(fc["txtNumara"].ToString());
+        //    using (var ctx=new OkulDbContext())
+        //    {
+        //        ctx.Ogrenciler.Add(ogr);
+        //        ctx.SaveChanges();
+        //    }
+        //    return View();
+        //}
+
+
         [HttpPost]
-        public ViewResult OgrenciEkle(IFormCollection fc)
-        {
-            var ogr = new Ogrenci();
-            ogr.Ad = fc["txtAd"].ToString();
-            ogr.Soyad = fc["txtSoyad"].ToString();
-            ogr.Numara = int.Parse(fc["txtNumara"].ToString());
-            using (var ctx=new OkulDbContext())
+        public ViewResult OgrenciEkle(Ogrenci ogr)
+        {            
+            using (var ctx = new OkulDbContext())
             {
                 ctx.Ogrenciler.Add(ogr);
                 ctx.SaveChanges();
