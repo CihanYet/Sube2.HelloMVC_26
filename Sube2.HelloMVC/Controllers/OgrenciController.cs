@@ -8,13 +8,12 @@ namespace Sube2.HelloMVC.Controllers
     {
         public IActionResult Index()
         {
-            var lst = new List<Ogrenci>
+            List<Ogrenci> list = null;
+            using (var ctx = new OkulDbContext())
             {
-                new Ogrenci() { Ad = "Ali", Soyad = "Veli" },
-                new Ogrenci() { Ad = "Ahmet", Soyad = "Mehmet" },
-                new Ogrenci() { Ad = "Osman", Soyad = "Yılmaz" }
-            };
-            return View(lst);
+                list = ctx.Ogrenciler.ToList();
+            }
+            return View(list);
         }
 
         public ViewResult OgrenciDetay()
@@ -55,7 +54,7 @@ namespace Sube2.HelloMVC.Controllers
 
         [HttpPost]
         public ViewResult OgrenciEkle(Ogrenci ogr)
-        {            
+        {
             using (var ctx = new OkulDbContext())
             {
                 ctx.Ogrenciler.Add(ogr);
